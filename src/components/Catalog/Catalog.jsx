@@ -60,16 +60,22 @@ const Catalog = () => {
 
   return (
     <Section>
-      <Filter />
+      <Filter isLoading={isLoading} />
       {isLoading ? (
         <Spinner />
       ) : catalogData.length > 0 ? (
         <CatalogList data={catalogData} />
       ) : (
-        <p>No data available.</p>
+        <p aria-label="No data available">No data available.</p>
       )}
       {showLoadMoreBtn && !isLoading && (
-        <Btn onClick={handleLoadMore} disabled={isLoadingMore}>
+        <Btn
+          type="button"
+          onClick={handleLoadMore}
+          disabled={isLoadingMore}
+          aria-label="Load more button"
+          aria-disabled={isLoadingMore ? "true" : "false"}
+        >
           {!isLoadingMore ? "Load more" : "Loading..."}
         </Btn>
       )}

@@ -12,7 +12,7 @@ import {
   FormBtn,
 } from "./Filter.styled";
 
-const Filter = ({ onFilterChange }) => {
+const Filter = ({ onFilterChange, isLoading }) => {
   const [selectedMake, setSelectedMake] = useState("");
   const [selectedPrice, setSelectedPrice] = useState("");
   const [minMileage, setMinMileage] = useState("");
@@ -34,8 +34,12 @@ const Filter = ({ onFilterChange }) => {
   return (
     <FilterContainerDiv>
       <ContainerDiv>
-        <Label>Car brand:</Label>
-        <Select value={selectedMake} onChange={e => setSelectedMake(e.target.value)}>
+        <Label htmlFor="makeSelect">Car brand:</Label>
+        <Select
+          id="makeSelect"
+          value={selectedMake}
+          onChange={e => setSelectedMake(e.target.value)}
+        >
           <Option value="">Enter the text</Option>
           {makes.map(make => (
             <Option key={make} value={make}>
@@ -45,8 +49,12 @@ const Filter = ({ onFilterChange }) => {
         </Select>
       </ContainerDiv>
       <ContainerDiv>
-        <Label>Price/ 1 hour</Label>
-        <Select value={selectedPrice} onChange={e => setSelectedPrice(e.target.value)}>
+        <Label htmlFor="priceSelect">Price/1 hour</Label>
+        <Select
+          id="priceSelect"
+          value={selectedPrice}
+          onChange={e => setSelectedPrice(e.target.value)}
+        >
           <Option value="">To $</Option>
           {prices.map(price => (
             <Option key={price} value={price}>
@@ -56,25 +64,33 @@ const Filter = ({ onFilterChange }) => {
         </Select>
       </ContainerDiv>
       <ContainerDiv>
-        <Label>Сar mileage / km</Label>
+        <Label htmlFor="minMileageInput maxMileageInput">Car mileage / km</Label>
         <ContainerInputDiv>
           <Input
             type="number"
             placeholder="From"
+            id="minMileageInput"
             value={minMileage}
             onChange={e => setMinMileage(e.target.value)}
           />
           <InputTo
             type="number"
             placeholder="To"
+            id="maxMileageInput"
             value={maxMileage}
             onChange={e => setMaxMileage(e.target.value)}
           />
         </ContainerInputDiv>
       </ContainerDiv>
 
-      <FormBtn type="submit" onClick={handleFilter} disabled={false}>
-        Search
+      <FormBtn
+        type="button"
+        onClick={handleFilter}
+        aria-label="Search for cars"
+        aria-disabled={isLoading ? "true" : "false"}
+        disabled={isLoading}
+      >
+        {isLoading ? "Searching..." : "Search"}
       </FormBtn>
     </FilterContainerDiv>
   );
