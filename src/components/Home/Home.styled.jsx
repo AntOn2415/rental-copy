@@ -43,16 +43,26 @@ export const Img = styled.img`
   height: 100%;
 `;
 export const LinkStyled = styled(NavLink)`
-  font-size: 34px;
-  font-weight: 700;
-  text-align: center;
-  line-height: 1.364;
-  color: #3470ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 250px;
+  padding: 12px;
+  font-size: 24px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: #3470ff;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
 
-  transition: color 300ms ease;
+  transition: background 300ms ease;
 
   &:hover,
   &:focus {
-    color: #0b44cd;
+    background: #0b44cd;
   }
 `;
