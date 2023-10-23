@@ -30,5 +30,6 @@ export const Btn = styled.button`
   &:disabled {
     color: #dcebf7;
     cursor: not-allowed;
+    text-decoration-line: none;
   }
 `;

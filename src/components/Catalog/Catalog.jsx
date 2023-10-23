@@ -70,7 +70,7 @@ const Catalog = () => {
       )}
       {showLoadMoreBtn && !isLoading && (
         <Btn onClick={handleLoadMore} disabled={isLoadingMore}>
-          Load more
+          {!isLoadingMore ? "Load more" : "Loading..."}
         </Btn>
       )}
     </Section>
