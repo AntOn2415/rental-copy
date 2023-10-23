@@ -11,9 +11,10 @@ export const Img = styled.img`
 
 export const NavUl = styled.ul`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 15px;
+  gap: 30px;
 `;
 
 export const NavLi = styled.li`
@@ -27,9 +28,14 @@ export const StyledLinkLogo = styled(NavLink)`
 `;
 
 export const StyledLink = styled(NavLink)`
+  display: flex;
+  justify-content: center;
   text-decoration: none;
   color: #343434;
-  padding: 29px 0;
+  border-radius: 12px;
+  height: 20px;
+  min-width: 160px;
+  padding: 10px;
   transition: color 300ms ease;
 
   &:hover,
@@ -40,5 +46,6 @@ export const StyledLink = styled(NavLink)`
 
   &.active {
     color: #3470ff;
+    background: #dcebf7;
   }
 `;

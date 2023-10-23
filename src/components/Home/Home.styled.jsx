@@ -5,6 +5,7 @@ import mapUA from "images/ukraine-map1.png";
 export const Section = styled.section`
   display: flex;
   flex-direction: column;
+  padding-left: 200px;
 `;
 
 export const HeroContainerDiv = styled.div`
