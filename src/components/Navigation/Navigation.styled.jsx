@@ -5,7 +5,7 @@ export const ImgContainerDiv = styled.div`
   /* display: flex; */
 `;
 export const Img = styled.img`
-  width: 140px;
+  width: 160px;
   height: 100%;
 `;
 
@@ -23,7 +23,6 @@ export const NavLi = styled.li`
 
 export const StyledLinkLogo = styled(NavLink)`
   display: flex;
-  padding: 11px 0;
   text-decoration: none;
 `;
 
@@ -34,7 +33,7 @@ export const StyledLink = styled(NavLink)`
   color: #343434;
   border-radius: 12px;
   height: 20px;
-  min-width: 160px;
+  width: 140px;
   padding: 10px;
   transition: color 300ms ease;
 
