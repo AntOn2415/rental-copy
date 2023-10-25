@@ -1,4 +1,4 @@
-import { styled, css } from "styled-components";
+import styled from "styled-components";
 import { NumericFormat } from "react-number-format";
 
 export const FilterContainerDiv = styled.div`
@@ -20,61 +20,6 @@ export const Label = styled.label`
   font-style: normal;
   font-weight: 500;
   line-height: calc(18 / 14);
-`;
-
-export const Select = styled.select`
-  position: relative;
-  z-index: 999;
-  display: flex;
-  padding: 14px 89px 14px 18px;
-  justify-content: center;
-  align-items: center;
-  gap: 32px;
-  margin-top: 8px;
-  border-radius: 14px;
-  background: #f7f7fb;
-  color: #121417;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: calc(20 / 18);
-  outline: none;
-  border: none;
-
-  &:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
-  }
-`;
-
-export const Option = styled.option`
-  display: inline-flex;
-
-  height: 272px;
-  padding: 14px 8px 14px 18px;
-  justify-content: flex-end;
-  align-items: flex-start;
-  gap: 112px;
-  flex-shrink: 0;
-  border-radius: 14px;
-  border: 1px solid rgba(18, 20, 23, 0.05);
-
-  background: #fff;
-
-  box-shadow: 0px 4px 36px 0px rgba(0, 0, 0, 0.02);
-
-  color: rgba(18, 20, 23, 0.2);
-
-  font-family: Manrope;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 20px;
-
-  &:hover {
-    background-color: #007bff;
-    color: #121417;
-  }
 `;
 
 export const ContainerInputDiv = styled.div`
@@ -115,6 +60,16 @@ export const Input = styled(NumericFormat)`
 
   border-radius: 14px 0px 0px 14px;
   border-right: 1px solid rgba(138, 138, 137, 0.2);
+
+  outline: ${({ "data-error": error }) => (error ? "1px solid red" : "none")};
+`;
+
+export const InputTo = styled(Input)`
+  width: 110px;
+  padding-left: 49px;
+  border-radius: 0px 14px 14px 0px;
+
+  outline: ${({ "data-error": error }) => (error ? "1px solid red" : "none")};
 `;
 
 export const ContainerSvg = styled.div`
@@ -125,21 +80,12 @@ export const ContainerSvg = styled.div`
   stroke: #121417;
   fill: none;
   pointer-events: none;
-
   transition: transform 300ms ease;
   transform-origin: center;
 
-  ${({ isActive }) =>
-    isActive &&
-    css`
-      transform: rotateX(180deg);
-    `}
-`;
-
-export const InputTo = styled(Input)`
-  width: 110px;
-  padding-left: 49px;
-  border-radius: 0px 14px 14px 0px;
+  &[data-is-active="true"] {
+    transform: rotateX(180deg);
+  }
 `;
 
 export const FormBtn = styled.button`

@@ -13,10 +13,10 @@ import {
   Input,
   InputTo,
   FormBtn,
-} from "./Filter.styled";
+} from "./FilterForm.styled";
 import { customSelectStyles } from "../../helpers/customSelectStyles";
 
-const Filter = ({ onFilterChange, isLoading }) => {
+const FilterForm = ({ onFilterChange }) => {
   const [selectedMake, setSelectedMake] = useState("");
   const [selectedPrice, setSelectedPrice] = useState("");
   const [minMileage, setMinMileage] = useState("");
@@ -24,41 +24,66 @@ const Filter = ({ onFilterChange, isLoading }) => {
   const [isActiveSelect, setIsActiveSelect] = useState(false);
   const [makes, setMakes] = useState([]);
   const [prices, setPrices] = useState([]);
+  const [minMileageError, setMinMileageError] = useState(false);
+  const [maxMileageError, setMaxMileageError] = useState(false);
+  const [isSearching, setIsSearching] = useState(false);
 
   useEffect(() => {
-    fetchCarMakes()
-      .then(makes => {
+    const fetchData = async () => {
+      try {
+        const makes = await fetchCarMakes();
         setMakes(makes);
-      })
-      .catch(error => {
-        console.error(error);
-      });
 
-    fetchCarPrices()
-      .then(prices => {
+        const prices = await fetchCarPrices();
         setPrices(prices);
-      })
-      .catch(error => {
+      } catch (error) {
         console.error(error);
-      });
+      }
+    };
+
+    fetchData();
   }, []);
 
-  const handleFilter = () => {
-    const filter = {
-      make: selectedMake,
-      price: selectedPrice,
-      minMileage,
-      maxMileage,
-    };
-    onFilterChange(filter);
+  const handleFilter = async () => {
+    setIsSearching(true);
+
+    try {
+      const filter = {
+        make: selectedMake,
+        price: selectedPrice,
+        minMileage,
+        maxMileage,
+      };
+      await onFilterChange(filter);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsSearching(false);
+    }
   };
 
   const handleMinMileageChange = e => {
-    setMinMileage(e.target.value);
+    const value = e.target.value;
+
+    if (value === "" || value >= 0 || value < maxMileage) {
+      setMinMileage(value);
+      setMinMileageError(false);
+    } else {
+      console.error("Некоректний ввід для мінімального пробігу");
+      setMinMileageError(true);
+    }
   };
 
   const handleMaxMileageChange = e => {
-    setMaxMileage(e.target.value);
+    const value = e.target.value;
+
+    if (value === "" || (value >= 0 && value >= minMileage)) {
+      setMaxMileage(value);
+      setMaxMileageError(false);
+    } else {
+      console.error("Некоректний ввід для максимального пробігу");
+      setMaxMileageError(true);
+    }
   };
 
   const handleSelectFocus = selectName => {
@@ -90,7 +115,7 @@ const Filter = ({ onFilterChange, isLoading }) => {
             onFocus={() => handleSelectFocus("makeSelect")}
             onBlur={() => setIsActiveSelect(false)}
           />
-          <ContainerSvg isActive={isActiveSelect === "makeSelect"}>
+          <ContainerSvg data-is-active={isActiveSelect === "makeSelect"}>
             <svg width="20" height="20">
               <use href={`${iconChevron}#icon-chevron`} />
             </svg>
@@ -108,7 +133,7 @@ const Filter = ({ onFilterChange, isLoading }) => {
             onFocus={() => handleSelectFocus("priceSelect")}
             onBlur={() => setIsActiveSelect(false)}
           />
-          <ContainerSvg isActive={isActiveSelect === "priceSelect"}>
+          <ContainerSvg data-is-active={isActiveSelect === "priceSelect"}>
             <svg width="20" height="20">
               <use href={`${iconChevron}#icon-chevron`} />
             </svg>
@@ -124,6 +149,7 @@ const Filter = ({ onFilterChange, isLoading }) => {
                 id="minMileageInput"
                 value={minMileage}
                 onChange={handleMinMileageChange}
+                data-error={minMileageError}
               />
             </ContainerInputDiv>
             <ContainerInputDiv>
@@ -133,6 +159,7 @@ const Filter = ({ onFilterChange, isLoading }) => {
                 id="maxMileageInput"
                 value={maxMileage}
                 onChange={handleMaxMileageChange}
+                data-error={maxMileageError}
               />
             </ContainerInputDiv>
           </div>
@@ -142,14 +169,14 @@ const Filter = ({ onFilterChange, isLoading }) => {
           type="button"
           onClick={handleFilter}
           aria-label="Search for cars"
-          aria-disabled={isLoading ? "true" : "false"}
-          disabled={isLoading}
+          aria-disabled={isSearching ? "true" : "false"}
+          disabled={isSearching}
         >
-          {isLoading ? "Searching..." : "Search"}
+          {isSearching ? "Searching..." : "Search"}
         </FormBtn>
       </FilterContainerDiv>
     </form>
   );
 };
 
-export default Filter;
+export default FilterForm;
