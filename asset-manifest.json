@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/rental-copy/static/css/main.61b984d7.css",
-    "main.js": "/rental-copy/static/js/main.49bb4389.js",
-    "static/js/427.300b6ce8.chunk.js": "/rental-copy/static/js/427.300b6ce8.chunk.js",
-    "static/js/92.9178874e.chunk.js": "/rental-copy/static/js/92.9178874e.chunk.js",
+    "main.js": "/rental-copy/static/js/main.d244c980.js",
+    "static/js/70.0ed29449.chunk.js": "/rental-copy/static/js/70.0ed29449.chunk.js",
+    "static/js/92.1214c41d.chunk.js": "/rental-copy/static/js/92.1214c41d.chunk.js",
     "static/js/910.6d6ebd5c.chunk.js": "/rental-copy/static/js/910.6d6ebd5c.chunk.js",
     "static/js/925.0099c070.chunk.js": "/rental-copy/static/js/925.0099c070.chunk.js",
     "static/js/246.934d00ec.chunk.js": "/rental-copy/static/js/246.934d00ec.chunk.js",
-    "static/js/111.7213ff88.chunk.js": "/rental-copy/static/js/111.7213ff88.chunk.js",
+    "static/js/111.ffbe2508.chunk.js": "/rental-copy/static/js/111.ffbe2508.chunk.js",
     "static/media/ukraine-map1.png": "/rental-copy/static/media/ukraine-map1.9deea25d74108860371b.png",
     "static/media/Manrope-SemiBold.ttf": "/rental-copy/static/media/Manrope-SemiBold.310f108cc524df0e5ffc.ttf",
     "static/media/Manrope-Medium.ttf": "/rental-copy/static/media/Manrope-Medium.08894ccb04665d1a9d53.ttf",
@@ -20,16 +20,16 @@
     "static/media/icons.svg": "/rental-copy/static/media/icons.18cb11b09f1b0408656e41295ccbb588.svg",
     "index.html": "/rental-copy/index.html",
     "main.61b984d7.css.map": "/rental-copy/static/css/main.61b984d7.css.map",
-    "main.49bb4389.js.map": "/rental-copy/static/js/main.49bb4389.js.map",
-    "427.300b6ce8.chunk.js.map": "/rental-copy/static/js/427.300b6ce8.chunk.js.map",
-    "92.9178874e.chunk.js.map": "/rental-copy/static/js/92.9178874e.chunk.js.map",
+    "main.d244c980.js.map": "/rental-copy/static/js/main.d244c980.js.map",
+    "70.0ed29449.chunk.js.map": "/rental-copy/static/js/70.0ed29449.chunk.js.map",
+    "92.1214c41d.chunk.js.map": "/rental-copy/static/js/92.1214c41d.chunk.js.map",
     "910.6d6ebd5c.chunk.js.map": "/rental-copy/static/js/910.6d6ebd5c.chunk.js.map",
     "925.0099c070.chunk.js.map": "/rental-copy/static/js/925.0099c070.chunk.js.map",
     "246.934d00ec.chunk.js.map": "/rental-copy/static/js/246.934d00ec.chunk.js.map",
-    "111.7213ff88.chunk.js.map": "/rental-copy/static/js/111.7213ff88.chunk.js.map"
+    "111.ffbe2508.chunk.js.map": "/rental-copy/static/js/111.ffbe2508.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.61b984d7.css",
-    "static/js/main.49bb4389.js"
+    "static/js/main.d244c980.js"
   ]
 }
